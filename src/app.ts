@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import routerItem from "./routes/item.routes";
+import routerAuth from "./routes/auth.routes";
 import db from "./config/mongo";
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(cors());
 app.use(express.json())
 
 app.use("/items",routerItem);
+app.use(routerAuth);
 db()
   .then(() => console.log("Conection database successfully"))
   .catch((err) => console.log(err));

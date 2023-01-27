@@ -6,10 +6,11 @@ import {
   getItems,
   updateItem,
 } from "../controllers/item.controllers";
+import { checkJwt } from "../middleware/session";
 
 const router = Router();
 
-router.get("/", getItems);
+router.get("/",checkJwt, getItems);
 router.get("/:id", getItem);
 router.post("/", createItem);
 router.put("/:id", updateItem);
